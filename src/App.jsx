@@ -13,6 +13,25 @@ function App() {
     })
 }, [])
 
+const [isMakingNewRow, setIsMakingNewRow] = useState(false)
+const [harvestedInput, setHarvestedInput] = useState('')
+
+function onAddClickHandler() {
+    setIsMakingNewRow(true)
+}
+
+function onSaveClickHandler() {
+  let maBod = {
+      harvested: harvestedInput,
+  }
+
+  axios.post('/job', maBod)
+  .then((response) => {
+      setTableData(response.data)
+      setIsMakingNewRow(false)
+      setHarvestedInput('')
+  })
+
   return (
     <>
       <header>Lifetime Species Harvest</header>
@@ -33,9 +52,21 @@ function App() {
                             />
                         })
                     }
+                    { isMakingNewRow && 
+                      <tr>
+                          <td>Species
+                            <input></input>
+                          </td>
+                          <td>Harvest-Count
+                            <input></input>
+                          </td>
+                      </tr>
+
+                    }
+
           </tbody>
       </table>
-      <button>Add</button>
+      <button onClick={onAddClickHandler} >Add</button>
     </>
   )
 }
