@@ -28,4 +28,20 @@ app.get('/species', (req, res) => {
     res.status(200).send(db)
 })
 
+app.put('/edit-species/:harvested/:species', (req, res) => {
+    let harvested = +req.params.harvested
+    let editedSpecies = req.params.species
+    console.log(harvested)
+    console.log(editedSpecies)
+
+    for (let i = 0; i < db.length; i++) {
+        if (db[i].species === editedSpecies) {
+            db[i].harvested = harvested
+            break
+        }
+    }
+
+    res.status(200).send(db)
+})
+
 ViteExpress.listen(app, 3000, () => {console.log('listening on 3000')})

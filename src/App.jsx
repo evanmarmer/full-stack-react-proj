@@ -29,6 +29,7 @@ function App() {
                             return <Row
                                 species={speciesObj.species}
                                 harvested={speciesObj.harvested}
+                                setSpeciesData={setSpeciesData}
                             />
                         })
                     }
