@@ -28,6 +28,15 @@ app.get('/species', (req, res) => {
     res.status(200).send(db)
 })
 
+app.post('/species', (req, res) => {
+  let newSpecies = req.body
+
+
+  db.push(newSpecies)
+
+  res.status(200).send(db)
+})
+
 app.put('/edit-species/:harvested/:species', (req, res) => {
     let harvested = +req.params.harvested
     let editedSpecies = req.params.species

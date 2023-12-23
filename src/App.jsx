@@ -14,7 +14,7 @@ function App() {
 }, [])
 
 const [isMakingNewRow, setIsMakingNewRow] = useState(false)
-const [harvestedInput, setHarvestedInput] = useState('')
+const [speciesInput, setSpeciesInput] = useState('')
 
 function onAddClickHandler() {
     setIsMakingNewRow(true)
@@ -22,22 +22,23 @@ function onAddClickHandler() {
 
 function onSaveClickHandler() {
   let maBod = {
-      harvested: harvestedInput,
+      species: speciesInput,
   }
-
-  axios.post('/job', maBod)
+  axios.post('/species', maBod)
   .then((response) => {
-      setTableData(response.data)
+      setSpeciesData(response.data)
       setIsMakingNewRow(false)
-      setHarvestedInput('')
+      setSpeciesInput('')
   })
+}
+
 
   return (
     <>
       <header>Lifetime Species Harvest</header>
       <table>
         <thead>
-          <tr>
+        <tr>
             <th></th>
             <th>Species</th>
             <th>Harvest-Count</th>
@@ -54,11 +55,12 @@ function onSaveClickHandler() {
                     }
                     { isMakingNewRow && 
                       <tr>
-                          <td>Species
-                            <input></input>
+                          <td>
+                          <button onClick={onSaveClickHandler}>Save</button>
                           </td>
-                          <td>Harvest-Count
-                            <input></input>
+                          <td>
+                            Species:
+                            <input type={"text"} value={speciesInput} onChange={(e) => setSpeciesInput(e.target.value)}/>
                           </td>
                       </tr>
 
@@ -66,7 +68,7 @@ function onSaveClickHandler() {
 
           </tbody>
       </table>
-      <button onClick={onAddClickHandler} >Add</button>
+      <button onClick={onAddClickHandler} >Add Species</button>
     </>
   )
 }
