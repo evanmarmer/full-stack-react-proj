@@ -53,4 +53,17 @@ app.put('/edit-species/:harvested/:species', (req, res) => {
     res.status(200).send(db)
 })
 
+app.delete('/species/:species', (req, res) => {
+  let species = req.params.species
+
+  for (let i = 0; i < db.length; i++) {
+      if (db[i].species === species) {
+          db.splice(i, 1)
+          break
+      }
+  }
+
+  res.status(200).send(db)
+})
+
 ViteExpress.listen(app, 3000, () => {console.log('listening on 3000')})

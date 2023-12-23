@@ -28,6 +28,11 @@ export default function Row(props){
             setIsEditing(false)
         })
     }
+
+    async function handleDeleteClick() {
+        let response = await axios.delete(`/species/${props.species}`)
+        props.setSpeciesData(response.data)
+    }
     
     return (
             <>
@@ -47,7 +52,7 @@ export default function Row(props){
                 </tr>
                 :<tr>
                     <td>
-                        <button>Delete</button>
+                        <button onClick={handleDeleteClick}>Delete</button>
                     </td>
                     <td>
                         <button onClick={handleEditClick}>Edit</button>
