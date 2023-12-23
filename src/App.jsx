@@ -40,6 +40,7 @@ function onSaveClickHandler() {
         <thead>
         <tr>
             <th></th>
+            <th></th>
             <th>Species</th>
             <th>Harvest-Count</th>
           </tr>
