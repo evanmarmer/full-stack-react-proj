@@ -14,7 +14,6 @@ export default function Row(props){
         setIsEditing(!isEditing)
     }
 
-
     function onChangeHandler(event) {
         setCurrentValue(event.target.value)
         setNewData({...props.newData, harvested:event.target.value})
@@ -35,7 +34,7 @@ export default function Row(props){
     }
     
     return (
-            <>
+        <>
             { isEditing 
                 ? <tr>
                     <td>
@@ -46,7 +45,7 @@ export default function Row(props){
                         {props.species}
                     </td>
                     <td>
-                        count
+                        count 
                         <input type='number' value={currentValue} onChange={onChangeHandler}/>
                     </td>
                 </tr>

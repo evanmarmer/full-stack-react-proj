@@ -38,7 +38,7 @@ function onSaveClickHandler() {
       <header>Lifetime Species Harvest</header>
       <table>
         <thead>
-        <tr>
+          <tr>
             <th></th>
             <th></th>
             <th>Species</th>
@@ -46,28 +46,28 @@ function onSaveClickHandler() {
           </tr>
         </thead>
         <tbody>
-                    { speciesData.map((speciesObj) => {
-                            return <Row
-                                species={speciesObj.species}
-                                harvested={speciesObj.harvested}
-                                setSpeciesData={setSpeciesData}
-                            />
-                        })
-                    }
-                    { isMakingNewRow && 
-                      <tr>
-                          <td>
-                          <button onClick={onSaveClickHandler}>Save</button>
-                          </td>
-                          <td>
-                            Species:
-                            <input type={"text"} value={speciesInput} onChange={(e) => setSpeciesInput(e.target.value)}/>
-                          </td>
-                      </tr>
+          { speciesData.map((speciesObj) => {
+              return <Row
+                  species={speciesObj.species}
+                  harvested={speciesObj.harvested}
+                  setSpeciesData={setSpeciesData}
+                />
+               })
+          }
+          { isMakingNewRow && 
+            <tr>
+              <td>
+                <button onClick={onSaveClickHandler}>Save</button>
+              </td>
+              <td>
+                Species:
+                <input type={"text"} value={speciesInput} onChange={(e) => setSpeciesInput(e.target.value)}/>
+              </td>
+            </tr>
 
-                    }
+          }
 
-          </tbody>
+        </tbody>
       </table>
       <button onClick={onAddClickHandler} >Add Species</button>
     </>
