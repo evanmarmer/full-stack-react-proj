@@ -20,7 +20,7 @@ let db = [
     },
     {
       species: 'Black Bear',
-      harvested: 0
+      harvested: 0 
     },
   ]
 
